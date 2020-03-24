@@ -3,7 +3,6 @@ import React, { createContext, useReducer, useRef } from "react"
 const InventoryFilterContext = createContext()
 
 const InventoryFilterProvider = ({ children, unfilteredInventory }) => {
-  const updatedState = useRef(initialFilterState)
   const initialFilterState = {
     itemList: unfilteredInventory.sort(
       (a, b) =>
@@ -19,6 +18,7 @@ const InventoryFilterProvider = ({ children, unfilteredInventory }) => {
       sortOrder: "",
     },
   }
+  const updatedState = useRef(initialFilterState)
 
   const applyFilters = (listings, filters) => {
     let result = listings
